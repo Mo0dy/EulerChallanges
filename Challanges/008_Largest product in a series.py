@@ -1,3 +1,5 @@
+# https://projecteuler.net/problem=8
+
 import numpy as np
 
 
@@ -24,8 +26,10 @@ series = '''
 71636269561882670428252483600823257530420752963450
 '''
 
-number = np.array([int(c) for c in series if c != "\n"])
+# avoid overflow
+number = np.array([int(c) for c in series if c != "\n"], dtype=np.float64)
 number = number
+
 
 interval = 13
 
