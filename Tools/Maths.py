@@ -32,3 +32,12 @@ def generate_fibbonaci(limit):
         elements[1] = elem
         yield elem
 
+
+def generate_triangle_numbers(limit):
+    curr_index = 2
+    number = 1
+    while number < limit:
+        yield number
+        number += curr_index
+        curr_index += 1
+

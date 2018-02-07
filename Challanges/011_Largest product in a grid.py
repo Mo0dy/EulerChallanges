@@ -28,10 +28,10 @@ series = '''
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 '''
 
-
 import numpy as np
 from EulerChallanges.Tools.Maths import *
 import winsound
+
 
 # avoid overflow
 lines = series.split("\n")
@@ -57,6 +57,7 @@ for i in range(0, number.shape[0]):
             greatest_product = product
 
 
+# i could also transpose the matrix
 # vertical
 for i in range(0, number.shape[0] - interval + 1):
     for j in range(0, number.shape[1]):
@@ -73,18 +74,20 @@ for i in range(0, number.shape[0] - interval + 1):
         product = 1
         for a in range(0, interval):
             product *= number[i + a, j + a]
+
         if product > greatest_product:
             greatest_product = product
 
 
 # diagonal other way
 for i in range(interval - 1, number.shape[0]):
-    for j in range(interval - 1, number.shape[1]):
+    for j in range(0, number.shape[1] - interval + 1):
         product = 1
         for a in range(0, interval):
-            product *= number[i - a, j - a]
+            product *= number[i - a, j + a]
         if product > greatest_product:
             greatest_product = product
 
-
 print(greatest_product)
+
+
